@@ -1,0 +1,10 @@
+---
+image:  docker-unrar
+version: 0.1.0
+name: Unrar to reuse on other containters
+description: "[docker-unrar] Unrar to reuse on other containters for chukyserver.io"
+ext_release: 6.2.10
+arch:
+  - aarch64
+  - x86_64
+  - armv7

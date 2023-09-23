@@ -1,9 +1,9 @@
 # syntax=docker/dockerfile:1
 
-FROM ghcr.io/linuxserver/baseimage-alpine:3.18 as alpine-buildstage
+FROM ghcr.io/chukysoria/baseimage-alpine:3.18-v0.2.0 as alpine-buildstage
 
 # set version label
-ARG UNRAR_VERSION=6.2.10
+ARG BUILD_EXT_RELEASE=6.2.10
 
 RUN \
   echo "**** install build dependencies ****" && \
@@ -13,7 +13,7 @@ RUN \
   mkdir /tmp/unrar && \
   curl -o \
     /tmp/unrar.tar.gz -L \
-    "https://www.rarlab.com/rar/unrarsrc-${UNRAR_VERSION}.tar.gz" && \
+    "https://www.rarlab.com/rar/unrarsrc-${BUILD_EXT_RELEASE}.tar.gz" && \
   tar xf \
     /tmp/unrar.tar.gz -C \
     /tmp/unrar --strip-components=1 && \
@@ -29,10 +29,10 @@ RUN \
     /tmp/*
 
 
-FROM ghcr.io/linuxserver/baseimage-ubuntu:jammy as ubuntu-buildstage
+FROM ghcr.io/chukysoria/baseimage-ubuntu:jammy-v0.1.0 as ubuntu-buildstage
 
 # set version label
-ARG UNRAR_VERSION=6.2.10
+ARG BUILD_EXT_RELEASE=6.2.10
 
 RUN \
   echo "**** install build dependencies ****" && \
@@ -44,7 +44,7 @@ RUN \
   mkdir /tmp/unrar && \
   curl -o \
     /tmp/unrar.tar.gz -L \
-    "https://www.rarlab.com/rar/unrarsrc-${UNRAR_VERSION}.tar.gz" && \  
+    "https://www.rarlab.com/rar/unrarsrc-${BUILD_EXT_RELEASE}.tar.gz" && \  
   tar xf \
     /tmp/unrar.tar.gz -C \
     /tmp/unrar --strip-components=1 && \
@@ -70,9 +70,9 @@ FROM scratch
 
 # set version label
 ARG BUILD_DATE
-ARG VERSION
-LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DATE}"
-LABEL maintainer="aptalca"
+ARG BUILD_VERSION
+LABEL build_version="Chukyserver.io version:- ${BUILD_VERSION} Build-date:- ${BUILD_DATE}"
+LABEL maintainer="chukysoria"
 
 # Add files from buildstage
 COPY --from=alpine-buildstage /usr/bin/unrar /usr/bin/unrar-alpine
