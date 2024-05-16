@@ -1,6 +1,6 @@
 ---
 image:  docker-unrar
-version: v1.0.10
+version: v1.0.11
 name: Unrar to reuse on other containters
 description: "[docker-unrar] Unrar to reuse on other containters for chukyserver.io"
 ext_release: 7.0.9
