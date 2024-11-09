@@ -3,7 +3,7 @@
 FROM ghcr.io/chukysoria/baseimage-alpine:3.18-v0.2.0 as alpine-buildstage
 
 # set version label
-ARG BUILD_EXT_RELEASE=7.0.9
+ARG BUILD_EXT_RELEASE=7.1.1
 
 RUN \
   echo "**** install build dependencies ****" && \
@@ -32,7 +32,7 @@ RUN \
 FROM ghcr.io/chukysoria/baseimage-ubuntu:jammy-v0.1.0 as ubuntu-buildstage
 
 # set version label
-ARG BUILD_EXT_RELEASE=7.0.9
+ARG BUILD_EXT_RELEASE=7.1.1
 
 RUN \
   echo "**** install build dependencies ****" && \
