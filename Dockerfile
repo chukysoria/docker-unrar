@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM ghcr.io/chukysoria/baseimage-alpine:3.18-v0.2.0 as alpine-buildstage
+FROM ghcr.io/chukysoria/baseimage-alpine:v0.6.22-3.20 AS alpine-buildstage
 
 # set version label
 ARG BUILD_EXT_RELEASE=7.1.1
@@ -19,8 +19,12 @@ RUN \
     /tmp/unrar --strip-components=1 && \
   cd /tmp/unrar && \
   sed -i 's|LDFLAGS=-pthread|LDFLAGS=-pthread -static|' makefile && \
+  sed -i 's|CXXFLAGS=-march=native |CXXFLAGS=|' makefile && \
   make && \
   install -v -m755 unrar /usr/bin && \
+  echo "**** test binary ****" && \
+  /usr/bin/unrar v /data.rar && \
+  /usr/bin/unrar t /data.rar && \
   echo "**** cleanup ****" && \
   apk del --purge \
     build-dependencies && \
@@ -29,7 +33,7 @@ RUN \
     /tmp/*
 
 
-FROM ghcr.io/chukysoria/baseimage-ubuntu:jammy-v0.1.0 as ubuntu-buildstage
+FROM ghcr.io/chukysoria/baseimage-ubuntu:v0.3.25-noble as ubuntu-buildstage
 
 # set version label
 ARG BUILD_EXT_RELEASE=7.1.1
@@ -50,8 +54,12 @@ RUN \
     /tmp/unrar --strip-components=1 && \
   cd /tmp/unrar && \
   sed -i 's|LDFLAGS=-pthread|LDFLAGS=-pthread -static|' makefile && \
+  sed -i 's|CXXFLAGS=-march=native |CXXFLAGS=|' makefile && \
   make && \
   install -v -m755 unrar /usr/bin && \
+  echo "**** test binary ****" && \
+  /usr/bin/unrar v /data.rar && \
+  /usr/bin/unrar t /data.rar && \
   echo "**** cleanup ****" && \
   apt-get remove -y \
     g++ \
