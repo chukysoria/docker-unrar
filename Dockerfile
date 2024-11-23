@@ -1,9 +1,11 @@
 # syntax=docker/dockerfile:1
 
-FROM ghcr.io/chukysoria/baseimage-alpine:v0.6.22-3.20 AS alpine-buildstage
+FROM ghcr.io/chukysoria/baseimage-alpine:v0.6.23-3.20 AS alpine-buildstage
 
 # set version label
 ARG BUILD_EXT_RELEASE=7.1.1
+
+COPY data.rar /data.rar
 
 RUN \
   echo "**** install build dependencies ****" && \
@@ -33,10 +35,12 @@ RUN \
     /tmp/*
 
 
-FROM ghcr.io/chukysoria/baseimage-ubuntu:v0.3.25-noble as ubuntu-buildstage
+FROM ghcr.io/chukysoria/baseimage-ubuntu:v0.2.39-jammy AS ubuntu-buildstage
 
 # set version label
 ARG BUILD_EXT_RELEASE=7.1.1
+
+COPY data.rar /data.rar
 
 RUN \
   echo "**** install build dependencies ****" && \
@@ -49,7 +53,7 @@ RUN \
   curl -o \
     /tmp/unrar.tar.gz -L \
     "https://www.rarlab.com/rar/unrarsrc-${BUILD_EXT_RELEASE}.tar.gz" && \  
-  tar xf \
+    tar xf \
     /tmp/unrar.tar.gz -C \
     /tmp/unrar --strip-components=1 && \
   cd /tmp/unrar && \
