@@ -5,6 +5,8 @@ FROM ghcr.io/chukysoria/baseimage-alpine:v0.6.23-3.20 AS alpine-buildstage
 # set version label
 ARG BUILD_EXT_RELEASE=7.1.1
 
+COPY data.rar /data.rar
+
 RUN \
   echo "**** install build dependencies ****" && \
   apk add --no-cache --virtual=build-dependencies \
@@ -37,6 +39,8 @@ FROM ghcr.io/chukysoria/baseimage-ubuntu:v0.3.25-noble as ubuntu-buildstage
 
 # set version label
 ARG BUILD_EXT_RELEASE=7.1.1
+
+COPY data.rar /data.rar
 
 RUN \
   echo "**** install build dependencies ****" && \
