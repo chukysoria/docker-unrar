@@ -35,7 +35,7 @@ RUN \
     /tmp/*
 
 
-FROM ghcr.io/chukysoria/baseimage-ubuntu:v0.3.25-noble as ubuntu-buildstage
+FROM ghcr.io/chukysoria/baseimage-ubuntu:v0.2.39-jammy AS ubuntu-buildstage
 
 # set version label
 ARG BUILD_EXT_RELEASE=7.1.1
@@ -53,7 +53,7 @@ RUN \
   curl -o \
     /tmp/unrar.tar.gz -L \
     "https://www.rarlab.com/rar/unrarsrc-${BUILD_EXT_RELEASE}.tar.gz" && \  
-  tar xf \
+    tar xf \
     /tmp/unrar.tar.gz -C \
     /tmp/unrar --strip-components=1 && \
   cd /tmp/unrar && \
