@@ -33,7 +33,7 @@ RUN \
     /tmp/*
 
 
-FROM ghcr.io/chukysoria/baseimage-ubuntu:v0.3.25-noble as ubuntu-buildstage
+FROM ghcr.io/chukysoria/baseimage-ubuntu:v0.3.26-noble as ubuntu-buildstage
 
 # set version label
 ARG BUILD_EXT_RELEASE=7.1.1
