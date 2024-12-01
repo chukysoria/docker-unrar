@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM ghcr.io/chukysoria/baseimage-alpine:v0.6.24-3.20 AS alpine-buildstage
+FROM ghcr.io/chukysoria/baseimage-alpine:v0.6.25-3.20 AS alpine-buildstage
 
 # set version label
 ARG BUILD_EXT_RELEASE=7.1.1
