@@ -1,6 +1,6 @@
-# syntax=docker/dockerfile:1
+# syntax=docker/dockerfile:1@sha256:db1ff77fb637a5955317c7a3a62540196396d565f3dd5742e76dddbb6d75c4c5
 
-FROM ghcr.io/chukysoria/baseimage-alpine:v0.6.25-3.20 AS alpine-buildstage
+FROM ghcr.io/chukysoria/baseimage-alpine:v0.6.25-3.20@sha256:058af9b1f3e48f0f88e37ae6f0b155afe75388add18cb11af652df316954dbfa AS alpine-buildstage
 
 # set version label
 ARG BUILD_EXT_RELEASE=7.1.1
@@ -35,7 +35,7 @@ RUN \
     /tmp/*
 
 
-FROM ghcr.io/chukysoria/baseimage-ubuntu:v0.2.40-jammy AS ubuntu-buildstage
+FROM ghcr.io/chukysoria/baseimage-ubuntu:v0.2.40-jammy@sha256:663590ec3e160ae39b4af4f127e6a8699218c185ca9f300f835dacf111b5f0d4 AS ubuntu-buildstage
 
 # set version label
 ARG BUILD_EXT_RELEASE=7.1.1
