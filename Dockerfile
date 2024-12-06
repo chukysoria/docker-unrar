@@ -35,7 +35,7 @@ RUN \
     /tmp/*
 
 
-FROM ghcr.io/chukysoria/baseimage-ubuntu:v0.2.40-jammy@sha256:663590ec3e160ae39b4af4f127e6a8699218c185ca9f300f835dacf111b5f0d4 AS ubuntu-buildstage
+FROM ghcr.io/chukysoria/baseimage-ubuntu:v0.2.41-jammy@sha256:aecaa3a0e8e5a04ed337f23e44055d0c93e64cdee30a9b84cda2e84920428fa9 AS ubuntu-buildstage
 
 # set version label
 ARG BUILD_EXT_RELEASE=7.1.1
