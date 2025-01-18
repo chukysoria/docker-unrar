@@ -3,8 +3,7 @@
 FROM ghcr.io/chukysoria/baseimage-alpine:v0.6.25-3.20@sha256:058af9b1f3e48f0f88e37ae6f0b155afe75388add18cb11af652df316954dbfa AS alpine-buildstage
 
 # set version label
-ARG BUILD_EXT_RELEASE=7.1.2
-
+ARG BUILD_EXT_RELEASE="7.1.3"
 COPY data.rar /data.rar
 
 RUN \
@@ -38,8 +37,7 @@ RUN \
 FROM ghcr.io/chukysoria/baseimage-ubuntu:v0.2.43-jammy@sha256:723e318cb08f68179ec1bf0e7d619e1ebf02da295ecb2890cacdc60eb817c6b5 AS ubuntu-buildstage
 
 # set version label
-ARG BUILD_EXT_RELEASE=7.1.2
-
+ARG BUILD_EXT_RELEASE="7.1.3"
 COPY data.rar /data.rar
 
 RUN \
