@@ -1,20 +1,24 @@
-# syntax=docker/dockerfile:1@sha256:9857836c9ee4268391bb5b09f9f157f3c91bb15821bb77969642813b0d00518d
+# syntax=docker/dockerfile:1
 
-FROM ghcr.io/chukysoria/baseimage-alpine:v0.6.25-3.20@sha256:058af9b1f3e48f0f88e37ae6f0b155afe75388add18cb11af652df316954dbfa AS alpine-buildstage
+ARG UNRAR_VERSION=7.1.6
+
+FROM ghcr.io/linuxserver/baseimage-alpine:riscv64-edge as alpine-buildstage
 
 # set version label
-ARG BUILD_EXT_RELEASE="7.1.6"
+ARG UNRAR_VERSION
+
 COPY data.rar /data.rar
 
 RUN \
   echo "**** install build dependencies ****" && \
   apk add --no-cache --virtual=build-dependencies \
-    build-base && \
+    build-base \
+    linux-headers && \
   echo "**** install unrar from source ****" && \
   mkdir /tmp/unrar && \
   curl -o \
     /tmp/unrar.tar.gz -L \
-    "https://www.rarlab.com/rar/unrarsrc-${BUILD_EXT_RELEASE}.tar.gz" && \
+    "https://www.rarlab.com/rar/unrarsrc-${UNRAR_VERSION}.tar.gz" && \
   tar xf \
     /tmp/unrar.tar.gz -C \
     /tmp/unrar --strip-components=1 && \
@@ -38,9 +42,9 @@ FROM scratch
 
 # set version label
 ARG BUILD_DATE
-ARG BUILD_VERSION
-LABEL build_version="Chukyserver.io version:- ${BUILD_VERSION} Build-date:- ${BUILD_DATE}"
-LABEL maintainer="chukysoria"
+ARG VERSION
+LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DATE}"
+LABEL maintainer="aptalca"
 
 # Add files from buildstage
 COPY --from=alpine-buildstage /usr/bin/unrar /usr/bin/unrar-alpine
