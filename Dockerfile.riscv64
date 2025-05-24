@@ -1,8 +1,8 @@
-# syntax=docker/dockerfile:1
+# syntax=docker/dockerfile:1@sha256:9857836c9ee4268391bb5b09f9f157f3c91bb15821bb77969642813b0d00518d
 
 ARG UNRAR_VERSION=7.1.6
 
-FROM ghcr.io/linuxserver/baseimage-alpine:riscv64-edge as alpine-buildstage
+FROM ghcr.io/linuxserver/baseimage-alpine:riscv64-edge@sha256:9875f39ce329ce9554b39a30ebef6c6365c95d6cd1a24f519d4278ee8b2cb0b3 as alpine-buildstage
 
 # set version label
 ARG UNRAR_VERSION
