@@ -2,7 +2,7 @@
 
 ARG UNRAR_VERSION=7.1.6
 
-FROM ghcr.io/linuxserver/baseimage-alpine:riscv64-edge@sha256:5464804ac44ac182f6bbf439da5561df562fc13c8f30b2c22c598e81d23fef4d as alpine-buildstage
+FROM ghcr.io/linuxserver/baseimage-alpine:riscv64-edge@sha256:71dcdd295f7552466fdae29933a43339049cf5e9184c91560542e81045e08c34 as alpine-buildstage
 
 # set version label
 ARG UNRAR_VERSION
