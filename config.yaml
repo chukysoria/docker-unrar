@@ -3,7 +3,7 @@ image:  docker-unrar
 version: v1.1.12
 name: Unrar to reuse on other containters
 description: "[docker-unrar] Unrar to reuse on other containters for chukyserver.io"
-ext_release: "7.2.1"
+ext_release: "7.2.2"
 arch:
   - aarch64
   - x86_64
