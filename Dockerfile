@@ -1,4 +1,4 @@
-# syntax=docker/dockerfile:1@sha256:ecfaec9ed6d810b56388c508f4121597bfbba70d41a6dfeee4d8cad5f295fc32
+# syntax=docker/dockerfile:1@sha256:4edf897a3ffa55b89f906fc8cc78afdb3f1834cc9c7083565e611a8a7d5fe99e
 
 FROM ghcr.io/chukysoria/baseimage-alpine:v0.6.25-3.20@sha256:058af9b1f3e48f0f88e37ae6f0b155afe75388add18cb11af652df316954dbfa AS alpine-buildstage
 
